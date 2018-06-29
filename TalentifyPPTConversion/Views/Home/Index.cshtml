@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+
+<html data-ng-app="uploadDemo">
+<head>
+    <title>Upload</title>
+    <script src="~/Content/Scripts/angular.min.js"></script>
+    <script src="~/Content/Scripts/angular-file-upload.min.js"></script>
+    <script type="text/javascript">
+        angular.module('uploadDemo', ['angularFileUpload'])
+            .controller('uploadCtrl', ['$scope', '$upload', function ($scope, $upload) {
+
+                $scope.upload = function (file) {
+                    if (file) {
+                        $upload.upload({
+                            url: 'api/upload',
+                            fields: { 'lessonId': $scope.lessonId, 'mediaURL': $scope.mediaURL},
+                            file: file
+                        }).success(function (data, status, headers, config) {
+                            console.log(config);
+                            alert("Thanks for the upload!\r\nFilename: " + config.file[0].name + "\r\nResponse: " + data);
+                        }).error(function(error) {
+                            alert("Ooops, something went wrong!");
+                            console.log("Error!", error);
+                        });
+                    }
+                };
+
+            }])
+    </script>
+</head>
+<body data-ng-controller="uploadCtrl">
+
+    <form name="uploadForm">
+        <fieldset>
+            <legend>Upload file</legend>
+            <div>
+                <label>Lesson ID(*)</label>
+                <input type="text" name="lessonId" ng-model="lessonId" size="48" required="">
+            </div>
+            <div>
+                <label>MediaURL (Optional)</label>
+                <input type="text" name="mediaURL" ng-model="mediaURL" size="48">
+            </div>
+            <div>
+                <label>File:</label>
+                <input type="file" ng-file-select="" ng-model="file" name="file" accept="application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.presentationml.slideshow,application/vnd.openxmlformats-officedocument.presentationml.presentation">
+            </div>
+
+            <button ng-click="upload(file)">Submit</button>
+        </fieldset>
+        <br>
+    </form>
+
+</body>
+</html>

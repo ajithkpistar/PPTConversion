@@ -25,3 +25,6 @@ C:\Users\ajith\source\repos\New folder\TalentifyPPTConversion\TalentifyPPTConver
 C:\Users\ajith\source\repos\New folder\TalentifyPPTConversion\TalentifyPPTConversion\obj\Debug\TalentifyPPTConversion.csproj.CoreCompileInputs.cache
 C:\Users\ajith\source\repos\New folder\TalentifyPPTConversion\TalentifyPPTConversion\obj\Debug\TalentifyPPTConversion.dll
 C:\Users\ajith\source\repos\New folder\TalentifyPPTConversion\TalentifyPPTConversion\obj\Debug\TalentifyPPTConversion.pdb
+C:\Users\ajith\source\repos\New folder\TalentifyPPTConversion\TalentifyPPTConversion\bin\DotNetZip.dll
+C:\Users\ajith\source\repos\New folder\TalentifyPPTConversion\TalentifyPPTConversion\bin\DotNetZip.xml
+C:\Users\ajith\source\repos\New folder\TalentifyPPTConversion\TalentifyPPTConversion\obj\Debug\TalentifyPPTConversion.csprojResolveAssemblyReference.cache

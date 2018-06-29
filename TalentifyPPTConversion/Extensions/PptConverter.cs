@@ -2,6 +2,7 @@
 using Microsoft.Office.Core;
 using System.IO.Compression;
 using System.IO;
+using Ionic.Zip;
 
 namespace TalentifyPPTConversion.Extensions
 {
@@ -40,7 +41,7 @@ namespace TalentifyPPTConversion.Extensions
             outPath = (outputPath +"/" + outputFileName + ".png").Replace("/","\\");
             file.SaveCopyAs(outPath, Microsoft.Office.Interop.PowerPoint.PpSaveAsFileType.ppSaveAsPNG, MsoTriState.msoTriStateMixed);
 
-            //convertXML(slideCount, xmlPath, outputFileName);
+            convertXML(slideCount, xmlPath, outputFileName);
             //createZip();
 
             if (File.Exists(zipPath))
@@ -48,8 +49,15 @@ namespace TalentifyPPTConversion.Extensions
                 File.Delete(zipPath);
             }
 
-       
-           // ZipFile.CreateFromDirectory(outputPath + "/" + outputFileName + "/", zipPath,CompressionLevel.Fastest,true);
+            using (ZipFile zipfile = new ZipFile())
+            {
+                
+                zipfile.AddDirectory(outputPath);
+                zipfile.Save(zipPath);
+            }
+
+
+            // ZipFile.CreateFromDirectory(outputPath + "/" + outputFileName + "/", zipPath,CompressionLevel.Fastest,true);
         }
 
 
